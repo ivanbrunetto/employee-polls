@@ -3,3 +3,45 @@ body {
   font-family: 'Segoe UI', 'Roboto', 'Oxygen', sans-serif;
   
 }
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+#navbar {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid lightgrey;
+}
+
+#navbar > div {
+  flex: 1 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 20px;
+}
+
+#navbar > img {
+  width: 52px;
+  height: 52px;
+  margin: 10px;
+}
+
+#navbar ul {
+  list-style: none;
+  padding: 0;
+
+}
+
+#navbar li {
+  display: inline-block;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#avatar {
+  display: flex;
+  align-items: center;
+}
