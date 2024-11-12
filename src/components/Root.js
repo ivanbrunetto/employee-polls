@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { Outlet } from "react-router-dom";
 import useToken from "../hooks/useToken";
 import Login from "./Login";
 import NavBar from "./NavBar";
+import Dashboard from "./Dashboard";
 
 const Root = () => {
   const { token, setToken } = useToken();
@@ -20,7 +22,9 @@ const Root = () => {
     <>
       <NavBar />
       <div id="content">
-        <p>Here goes the content</p>
+        <Outlet>
+          <Dashboard />
+        </Outlet>
       </div>
     </>
   );

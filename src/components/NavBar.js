@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import logo from "../images/applogo_croped_374x374.jpeg";
 
 const NavBar = () => {
@@ -10,13 +11,13 @@ const NavBar = () => {
       <nav>
         <ul>
           <li>
-            <a>Dashborad</a>
+            <Link to="/dashboard">Dashborad</Link>
           </li>
           <li>
-            <a>Leaderboard</a>
+            <Link to="/leaderboard">Leaderboard</Link>
           </li>
           <li>
-            <a>New Poll</a>
+            <Link to="/newpoll">New Poll</Link>
           </li>
         </ul>
       </nav>
