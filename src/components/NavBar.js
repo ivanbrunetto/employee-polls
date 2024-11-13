@@ -9,19 +9,29 @@ const NavBar = () => {
     <div id="navbar">
       <img src={logo}></img>
       <nav>
-        <ul>
-          <li>
-            <Link to="/dashboard">Dashborad</Link>
-          </li>
-          <li>
-            <Link to="/leaderboard">Leaderboard</Link>
-          </li>
-          <li>
-            <Link to="/newpoll">New Poll</Link>
-          </li>
-        </ul>
+        <Link
+          to="/dashboard"
+          className={active === "dashboard" && "active"}
+          onClick={() => setActive("dashboard")}
+        >
+          Dashborad
+        </Link>
+        <Link
+          to="/leaderboard"
+          className={active === "leaderboard" && "active"}
+          onClick={() => setActive("leaderboard")}
+        >
+          Leaderboard
+        </Link>
+        <Link
+          to="/newpoll"
+          className={active === "newpoll" && "active"}
+          onClick={() => setActive("newpoll")}
+        >
+          New Poll
+        </Link>
       </nav>
-      <div>
+      <div id="nav-left">
         <img src=""></img>
         <p>sarahedo</p>
         <p>Logout</p>

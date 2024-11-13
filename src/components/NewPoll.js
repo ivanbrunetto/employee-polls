@@ -1,5 +1,5 @@
 const NewPoll = () => {
-  return <h3>New Pool page</h3>;
+  return <h3>New Poll page</h3>;
 };
 
 export default NewPoll;

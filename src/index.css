@@ -1,7 +1,19 @@
+.debug {
+  border: 1px solid red;
+}
+
+html {
+  box-sizing: border-box;
+}
+
 body {
-  margin: 0;
   font-family: 'Segoe UI', 'Roboto', 'Oxygen', sans-serif;
-  
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  margin: 0;
+  color: #121212;
+
 }
 
 #root {
@@ -12,15 +24,7 @@ body {
 #navbar {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid lightgrey;
-}
-
-#navbar > div {
-  flex: 1 1;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin-right: 20px;
+  border-bottom: 2px solid lightgrey;
 }
 
 #navbar > img {
@@ -29,19 +33,47 @@ body {
   margin: 10px;
 }
 
-#navbar ul {
-  list-style: none;
-  padding: 0;
-
-}
-
-#navbar li {
-  display: inline-block;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-#avatar {
+#navbar > nav {
+  height: 72px;
   display: flex;
   align-items: center;
+}
+
+#navbar a {
+  height: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+  align-items: center;
+  outline-color: transparent;
+  text-decoration: none;
+}
+
+#navbar a.active {
+  border-bottom: 2px solid black;
+}
+
+#navbar a:link {
+  color: inherit;
+}
+
+#navbar a:visited {
+  outline: none;
+  color: inherit;
+}
+
+#navbar a:hover {
+  background-color: hsl(0, 0%, 90%);
+}
+
+#navbar a:active {
+  background-color: hsl(0, 0%, 85%);}
+
+
+#nav-left {
+  flex: 1 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 20px;
 }
