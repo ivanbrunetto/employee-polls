@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { PropTypes } from "prop-types";
 import { login } from "../utils/api";
 import { setAuthedUser } from "../actions/authedUser";
+import LoadingBar from "react-redux-loading-bar";
+import { showLoading, hideLoading } from "react-redux-loading-bar";
 
 const Login = ({ dispatch }) => {
   const [userName, setUserName] = useState("");
@@ -14,6 +16,7 @@ const Login = ({ dispatch }) => {
 
     setLoginFailed(false);
 
+    dispatch(showLoading());
     login({ userName, password })
       .then((token) => {
         dispatch(setAuthedUser(userName));
@@ -22,11 +25,13 @@ const Login = ({ dispatch }) => {
       .catch((er) => {
         setLoginFailed(true);
         console.log(er);
+        dispatch(hideLoading());
       });
   };
 
   return (
     <div claseName="login">
+      <LoadingBar />
       <h1>Employee Polls</h1>
       <form onSubmit={handleSubmit}>
         <label>

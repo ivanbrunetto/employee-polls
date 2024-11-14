@@ -1,7 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { useEffect } from "react";
 import { connect } from "react-redux";
-
 import { setAuthedUser } from "../actions/authedUser";
 import Login from "./Login";
 import NavBar from "./NavBar";
@@ -11,7 +10,7 @@ const Root = ({ dispatch, authedUser }) => {
   useEffect(() => {
     const credentials = JSON.parse(sessionStorage.getItem("token"));
     credentials?.userName && dispatch(setAuthedUser(credentials.userName));
-  });
+  }, []);
 
   if (!authedUser) {
     return (
@@ -33,23 +32,8 @@ const Root = ({ dispatch, authedUser }) => {
   );
 };
 
-const mapStateToProps = ({ authedUser }) => {
-  return {
-    authedUser,
-  };
-};
+const mapStateToProps = ({ authedUser }) => ({
+  authedUser,
+});
 
 export default connect(mapStateToProps)(Root);
-
-/* <Navbar appearance="subtle"> */
-/*       
-    <Nav appearance="subtle" activeKey="">
-        <Nav.Item eventKey="dashboard">Dahsboard</Nav.Item>
-        <Nav.Item>Leaderboard</Nav.Item>
-        <Nav.Item>New Poll</Nav.Item>
-      </Nav>
-      <Nav pullRight>
-        <Nav.Item>Logout</Nav.Item>
-    </Nav>
-*/
-/* </Navbar> */

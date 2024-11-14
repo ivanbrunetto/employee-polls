@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-
 import logo from "../images/applogo_croped_374x374.jpeg";
 import { setAuthedUser } from "../actions/authedUser";
 
@@ -51,10 +50,8 @@ const NavBar = ({ dispatch, authedUser }) => {
   );
 };
 
-const mapStateToProps = ({ authedUser }) => {
-  return {
-    authedUser,
-  };
-};
+const mapStateToProps = ({ authedUser }) => ({
+  authedUser,
+});
 
 export default connect(mapStateToProps)(NavBar);
