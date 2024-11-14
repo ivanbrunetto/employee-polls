@@ -1,9 +1,18 @@
 import { useState } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import logo from "../images/applogo_croped_374x374.jpeg";
 
-const NavBar = () => {
+import logo from "../images/applogo_croped_374x374.jpeg";
+import { setAuthedUser } from "../actions/authedUser";
+
+const NavBar = ({ dispatch, authedUser }) => {
   const [active, setActive] = useState("dashboard");
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    sessionStorage.setItem("token", null);
+    dispatch(setAuthedUser(null));
+  };
 
   return (
     <div id="navbar">
@@ -31,13 +40,21 @@ const NavBar = () => {
           New Poll
         </Link>
       </nav>
-      <div id="nav-left">
+      <div id="container-right">
         <img src=""></img>
         <p>sarahedo</p>
-        <p>Logout</p>
+        <a href="" onClick={handleLogout}>
+          Logout
+        </a>
       </div>
     </div>
   );
 };
 
-export default NavBar;
+const mapStateToProps = ({ authedUser }) => {
+  return {
+    authedUser,
+  };
+};
+
+export default connect()(NavBar);

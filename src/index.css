@@ -70,10 +70,10 @@ body {
   background-color: hsl(0, 0%, 85%);}
 
 
-#nav-left {
+#container-right {
   flex: 1 1;
+  height: 72px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin-right: 20px;
 }
