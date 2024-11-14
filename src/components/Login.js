@@ -21,6 +21,7 @@ const Login = ({ dispatch }) => {
       .then((token) => {
         dispatch(setAuthedUser(userName));
         sessionStorage.setItem("token", JSON.stringify({ userName, token }));
+        dispatch(hideLoading());
       })
       .catch((er) => {
         setLoginFailed(true);
