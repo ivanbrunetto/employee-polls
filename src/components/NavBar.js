@@ -2,7 +2,7 @@ import { useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import logo from "../images/applogo_croped_374x374.jpeg";
-import { setAuthedUser } from "../actions/authedUser";
+import { resetApp } from "../actions/shared";
 
 const NavBar = ({ dispatch, authedUser }) => {
   const [active, setActive] = useState("dashboard");
@@ -10,7 +10,7 @@ const NavBar = ({ dispatch, authedUser }) => {
   const handleLogout = (e) => {
     e.preventDefault();
     sessionStorage.setItem("token", null);
-    dispatch(setAuthedUser(null));
+    dispatch(resetApp());
   };
 
   return (

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { connect } from "react-redux";
-import { PropTypes } from "prop-types";
 import { login } from "../utils/api";
 import { setAuthedUser } from "../actions/authedUser";
 import LoadingBar from "react-redux-loading-bar";
@@ -31,7 +30,7 @@ const Login = ({ dispatch }) => {
   };
 
   return (
-    <div claseName="login">
+    <div className="login">
       <LoadingBar />
       <h1>Employee Polls</h1>
       <form onSubmit={handleSubmit}>
@@ -53,10 +52,6 @@ const Login = ({ dispatch }) => {
       </form>
     </div>
   );
-};
-
-Login.propTypes = {
-  setToken: PropTypes.func.isRequired,
 };
 
 export default connect()(Login);
