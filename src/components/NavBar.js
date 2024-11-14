@@ -42,7 +42,7 @@ const NavBar = ({ dispatch, authedUser }) => {
       </nav>
       <div id="container-right">
         <img src=""></img>
-        <p>sarahedo</p>
+        <p>{authedUser}</p>
         <a href="" onClick={handleLogout}>
           Logout
         </a>
@@ -57,4 +57,4 @@ const mapStateToProps = ({ authedUser }) => {
   };
 };
 
-export default connect()(NavBar);
+export default connect(mapStateToProps)(NavBar);
