@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import logo from "../images/applogo_croped_374x374.jpeg";
 import { resetApp } from "../actions/shared";
 
-const NavBar = ({ dispatch, authedUser }) => {
+const NavBar = ({ dispatch, authedUser, avatarURL }) => {
   const [active, setActive] = useState("dashboard");
 
   const handleLogout = (e) => {
@@ -40,8 +40,10 @@ const NavBar = ({ dispatch, authedUser }) => {
         </Link>
       </nav>
       <div id="container-right">
-        <img src=""></img>
-        <p>{authedUser}</p>
+        <div id="avatar">
+          <img src={avatarURL}></img>
+          <p>{authedUser}</p>
+        </div>
         <a href="" onClick={handleLogout}>
           Logout
         </a>
@@ -50,8 +52,11 @@ const NavBar = ({ dispatch, authedUser }) => {
   );
 };
 
-const mapStateToProps = ({ authedUser }) => ({
-  authedUser,
-});
+const mapStateToProps = ({ authedUser, users }) => {
+  return {
+    authedUser,
+    avatarURL: users ? users[authedUser].avatarURL : null,
+  };
+};
 
 export default connect(mapStateToProps)(NavBar);
