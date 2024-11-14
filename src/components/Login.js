@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { connect } from "react-redux";
 import { PropTypes } from "prop-types";
 import { login } from "../utils/api";
+import { setAuthedUser } from "../actions/authedUser";
 
-const Login = ({ setToken }) => {
+const Login = ({ dispatch }) => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [loginFailed, setLoginFailed] = useState(false);
@@ -13,7 +15,10 @@ const Login = ({ setToken }) => {
     setLoginFailed(false);
 
     login({ userName, password })
-      .then((token) => setToken(token))
+      .then((token) => {
+        dispatch(setAuthedUser(userName));
+        sessionStorage.setItem("token", JSON.stringify({ userName, token }));
+      })
       .catch((er) => {
         setLoginFailed(true);
         console.log(er);
@@ -48,4 +53,4 @@ Login.propTypes = {
   setToken: PropTypes.func.isRequired,
 };
 
-export default Login;
+export default connect()(Login);

@@ -11,21 +11,21 @@ const NavBar = () => {
       <nav>
         <Link
           to="/dashboard"
-          className={active === "dashboard" && "active"}
+          className={active === "dashboard" ? "active" : ""}
           onClick={() => setActive("dashboard")}
         >
           Dashborad
         </Link>
         <Link
           to="/leaderboard"
-          className={active === "leaderboard" && "active"}
+          className={active === "leaderboard" ? "active" : ""}
           onClick={() => setActive("leaderboard")}
         >
           Leaderboard
         </Link>
         <Link
           to="/newpoll"
-          className={active === "newpoll" && "active"}
+          className={active === "newpoll" ? "active" : ""}
           onClick={() => setActive("newpoll")}
         >
           New Poll

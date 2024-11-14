@@ -1,19 +1,22 @@
-import { useState } from "react";
 import { Outlet } from "react-router-dom";
-import useToken from "../hooks/useToken";
+import { useEffect } from "react";
+import { connect } from "react-redux";
+
+import { setAuthedUser } from "../actions/authedUser";
 import Login from "./Login";
 import NavBar from "./NavBar";
 import Dashboard from "./Dashboard";
 
-const Root = () => {
-  const { token, setToken } = useToken();
+const Root = ({ dispatch, authedUser }) => {
+  useEffect(() => {
+    const credentials = JSON.parse(sessionStorage.getItem("token"));
+    credentials?.userName && dispatch(setAuthedUser(credentials.userName));
+  });
 
-  const [active, setActive] = useState("dashboard");
-
-  if (!token) {
+  if (!authedUser) {
     return (
       <div className="App">
-        <Login setToken={setToken} />
+        <Login />
       </div>
     );
   }
@@ -30,7 +33,13 @@ const Root = () => {
   );
 };
 
-export default Root;
+const mapStateToProps = ({ authedUser }) => {
+  return {
+    authedUser,
+  };
+};
+
+export default connect(mapStateToProps)(Root);
 
 /* <Navbar appearance="subtle"> */
 /*       

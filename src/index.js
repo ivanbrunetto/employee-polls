@@ -1,12 +1,19 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+
 import "./index.css";
 import Root from "./components/Root";
 import ErrorPage from "./components/ErrorPage";
 import Dashboard from "./components/Dashboard";
 import Leaderboard from "./components/Leaderboard";
 import NewPoll from "./components/NewPoll";
+import reducer from "./reducers";
+import middleware from "./middleware";
+
+const store = createStore(reducer, middleware);
 
 const router = createBrowserRouter([
   {
@@ -35,6 +42,8 @@ const root = createRoot(container);
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );
