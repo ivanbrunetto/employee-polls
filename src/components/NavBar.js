@@ -1,30 +1,38 @@
 import { useState } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../images/applogo_croped_374x374.jpeg";
 import { resetApp } from "../actions/shared";
 
+const DEFAULT_PAGE = "dashboard";
+
 const NavBar = ({ dispatch, authedUser, avatarURL }) => {
-  const [active, setActive] = useState("dashboard");
+  const [active, setActive] = useState(DEFAULT_PAGE);
+
+  const navigate = useNavigate();
 
   const handleLogout = (e) => {
     e.preventDefault();
     sessionStorage.setItem("token", null);
     dispatch(resetApp());
+    setActive(DEFAULT_PAGE);
+    navigate("/");
   };
 
   return (
     <div id="navbar">
-      <img src={logo}></img>
+      <img src={logo} alt="employee poll logo"></img>
       <nav>
         <Link
-          to="/dashboard"
+          id="dashboard"
+          to="/"
           className={active === "dashboard" ? "active" : ""}
           onClick={() => setActive("dashboard")}
         >
           Dashborad
         </Link>
         <Link
+          id="leaderboard"
           to="/leaderboard"
           className={active === "leaderboard" ? "active" : ""}
           onClick={() => setActive("leaderboard")}
@@ -32,6 +40,7 @@ const NavBar = ({ dispatch, authedUser, avatarURL }) => {
           Leaderboard
         </Link>
         <Link
+          id="newpoll"
           to="/newpoll"
           className={active === "newpoll" ? "active" : ""}
           onClick={() => setActive("newpoll")}
@@ -41,7 +50,7 @@ const NavBar = ({ dispatch, authedUser, avatarURL }) => {
       </nav>
       <div id="container-right">
         <div id="avatar">
-          <img src={avatarURL}></img>
+          <img src={avatarURL} alt="avatar"></img>
           <p>{authedUser}</p>
         </div>
         <a href="" onClick={handleLogout}>
@@ -52,11 +61,9 @@ const NavBar = ({ dispatch, authedUser, avatarURL }) => {
   );
 };
 
-const mapStateToProps = ({ authedUser, users }) => {
-  return {
-    authedUser,
-    avatarURL: users ? users[authedUser].avatarURL : null,
-  };
-};
+const mapStateToProps = ({ authedUser, users }) => ({
+  authedUser,
+  avatarURL: users ? users[authedUser].avatarURL : null,
+});
 
 export default connect(mapStateToProps)(NavBar);
