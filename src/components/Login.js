@@ -4,6 +4,7 @@ import { login } from "../utils/api";
 import { setAuthedUser } from "../actions/authedUser";
 import LoadingBar from "react-redux-loading-bar";
 import { showLoading, hideLoading } from "react-redux-loading-bar";
+import logo from "../images/applogo_croped_374x374.jpeg";
 
 const Login = ({ dispatch }) => {
   const [userName, setUserName] = useState("");
@@ -30,27 +31,35 @@ const Login = ({ dispatch }) => {
   };
 
   return (
-    <div className="login">
+    <>
       <LoadingBar />
-      <h1>Employee Polls</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          <p>Username</p>
-          <input type="text" onChange={(e) => setUserName(e.target.value)} />
-        </label>
-        <label>
-          <p>Password</p>
-          <input
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
-        <div>
-          <button type="submit">Login</button>
-        </div>
-        {loginFailed && <p>Invalid username / password. Please try again</p>}
-      </form>
-    </div>
+      <div id="login">
+        <h1>Employee Polls</h1>
+        <img src={logo} />
+        <form onSubmit={handleSubmit}>
+          <label>
+            <p>Username</p>
+            <input
+              type="text"
+              placeholder="Username"
+              onChange={(e) => setUserName(e.target.value)}
+            />
+          </label>
+          <label>
+            <p>Password</p>
+            <input
+              type="password"
+              placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </label>
+          <div>
+            <button type="submit">Login</button>
+          </div>
+          {loginFailed && <p>Invalid username / password. Please try again</p>}
+        </form>
+      </div>
+    </>
   );
 };
 
