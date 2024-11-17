@@ -5,22 +5,18 @@ import "./Dashboard.scss";
 const Dashboard = (props) => {
   return (
     <div className="dashboard">
-      <h1>Unanswered Polls</h1>
-      <ul style={{ listStyle: "none" }}>
+      <h2>Unanswered Polls</h2>
+      <div className="poll-list-container">
         {props.uQuestions.map((id) => (
-          <li key={id}>
-            <PollCard id={id} />
-          </li>
+          <PollCard id={id} />
         ))}
-      </ul>
-      <h1>Answered Polls</h1>
-      <ul style={{ listStyle: "none" }}>
+      </div>
+      <h2>Answered Polls</h2>
+      <div className="poll-list-container">
         {props.aQuestions.map((id) => (
-          <li key={id}>
-            <PollCard id={id} />
-          </li>
+          <PollCard id={id} />
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
