@@ -63,7 +63,7 @@ const NavBar = ({ dispatch, authedUser, avatarURL }) => {
 
 const mapStateToProps = ({ authedUser, users }) => ({
   authedUser,
-  avatarURL: users ? users[authedUser].avatarURL : null,
+  avatarURL: users[authedUser]?.avatarURL,
 });
 
 export default connect(mapStateToProps)(NavBar);

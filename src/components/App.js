@@ -14,12 +14,14 @@ import Dashboard from "./Dashboard";
 import ErrorPage from "./ErrorPage";
 import Leaderboard from "./Leaderboard";
 import NewPoll from "./NewPoll";
+import LoadingBar from "react-redux-loading-bar";
 
 const router = createBrowserRouter([
   {
     path: "*",
     element: (
       <>
+        <LoadingBar />
         <NavBar />
         <Routes>
           <Route path="/" exact element={<Dashboard />} />

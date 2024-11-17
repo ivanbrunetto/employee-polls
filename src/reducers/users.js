@@ -1,6 +1,6 @@
 import { RECEIVE_USERS } from "../actions/users";
 
-export function users(state = null, action) {
+export const users = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_USERS:
       return {
@@ -10,4 +10,4 @@ export function users(state = null, action) {
     default:
       return state;
   }
-}
+};
