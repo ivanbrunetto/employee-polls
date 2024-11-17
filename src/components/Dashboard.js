@@ -1,21 +1,26 @@
 import { connect } from "react-redux";
+import PollCard from "./PollCard";
 
 const Dashboard = (props) => {
   return (
-    <>
-      <h3>Unanswered Polls</h3>
-      <ul>
+    <div className="dashboard">
+      <h1>Unanswered Polls</h1>
+      <ul style={{ listStyle: "none" }}>
         {props.uQuestions.map((id) => (
-          <li key={id}>{id}</li>
+          <li key={id}>
+            <PollCard id={id} />
+          </li>
         ))}
       </ul>
-      <h3>Answered Polls</h3>
-      <ul>
+      <h1>Answered Polls</h1>
+      <ul style={{ listStyle: "none" }}>
         {props.aQuestions.map((id) => (
-          <li key={id}>{id}</li>
+          <li key={id}>
+            <PollCard id={id} />
+          </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 };
 

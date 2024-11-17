@@ -52,6 +52,7 @@ let questions = {
     id: "8xf0y6ziyjabvozdd253nd",
     author: "sarahedo",
     timestamp: 1467166872634,
+    headline: "Frontend language",
     optionOne: {
       votes: ["sarahedo"],
       text: "Build our new application with Javascript",
@@ -65,6 +66,7 @@ let questions = {
     id: "6ni6ok3ym7mf1p33lnez",
     author: "mtsamis",
     timestamp: 1468479767190,
+    headline: "More developers",
     optionOne: {
       votes: [],
       text: "hire more frontend developers",
@@ -78,6 +80,7 @@ let questions = {
     id: "am8ehyc8byjqgar0jgpub9",
     author: "sarahedo",
     timestamp: 1488579767190,
+    headline: "Release retrospective",
     optionOne: {
       votes: [],
       text: "conduct a release retrospective 1 week after a release",
@@ -91,6 +94,7 @@ let questions = {
     id: "loxhs1bqm25b708cmbf3g",
     author: "tylermcginnis",
     timestamp: 1482579767190,
+    headline: "Code reviews",
     optionOne: {
       votes: [],
       text: "have code reviews conducted by peers",
@@ -104,6 +108,7 @@ let questions = {
     id: "vthrdm985a262al8qx3do",
     author: "tylermcginnis",
     timestamp: 1489579767190,
+    headline: "Next course",
     optionOne: {
       votes: ["tylermcginnis"],
       text: "take a course on ReactJS",
@@ -117,6 +122,7 @@ let questions = {
     id: "xj352vofupe1dqz9emx13r",
     author: "mtsamis",
     timestamp: 1493579767190,
+    headline: "Production deploy",
     optionOne: {
       votes: ["mtsamis", "zoshikanlu"],
       text: "deploy to production once every two weeks",
