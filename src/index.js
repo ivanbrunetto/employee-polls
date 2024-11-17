@@ -3,7 +3,6 @@ import { createRoot } from "react-dom/client";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 
-import "./index.css";
 import App from "./components/App";
 import reducer from "./reducers";
 import middleware from "./middleware";

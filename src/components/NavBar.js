@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../images/applogo_croped_374x374.jpeg";
 import { resetApp } from "../actions/shared";
+import "./NavBar.scss";
 
 const DEFAULT_PAGE = "dashboard";
 
@@ -20,7 +21,7 @@ const NavBar = ({ dispatch, authedUser, avatarURL }) => {
   };
 
   return (
-    <div id="navbar">
+    <div className="app-navbar">
       <img src={logo} alt="employee poll logo"></img>
       <nav>
         <Link
@@ -48,8 +49,8 @@ const NavBar = ({ dispatch, authedUser, avatarURL }) => {
           New Poll
         </Link>
       </nav>
-      <div id="container-right">
-        <div id="avatar">
+      <div className="container-right">
+        <div className="avatar">
           <img src={avatarURL} alt="avatar"></img>
           <p>{authedUser}</p>
         </div>

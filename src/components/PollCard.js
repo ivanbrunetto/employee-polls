@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { formatDate } from "../utils/helpers";
+import "./PollCard.scss";
 
 const PollCard = (props) => {
   return (

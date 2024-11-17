@@ -15,6 +15,7 @@ import ErrorPage from "./ErrorPage";
 import Leaderboard from "./Leaderboard";
 import NewPoll from "./NewPoll";
 import LoadingBar from "react-redux-loading-bar";
+import "./App.scss";
 
 const router = createBrowserRouter([
   {

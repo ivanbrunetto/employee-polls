@@ -1,0 +1,21 @@
+.poll-card {
+  display: flex;
+  width: 280px;
+  padding: 0.5rem;
+  margin: 10px;
+  font-family: inherit;
+  background-color: #eaeaea;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 4px 4px 4px rgba(205, 207, 214, 0.8);
+}
+
+.poll-card img {
+  width: 36px;
+  height: 36px;
+}
+
+.poll-card.info {
+  flex: 1 1;
+  display: flex;
+}

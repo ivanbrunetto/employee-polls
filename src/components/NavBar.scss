@@ -1,0 +1,75 @@
+.app-navbar {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid lightgrey;
+}
+
+.app-navbar > img {
+  width: 52px;
+  height: 52px;
+  margin: 10px;
+}
+
+.app-navbar > nav {
+  height: 72px;
+  display: flex;
+  align-items: center;
+}
+
+.app-navbar a {
+  height: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+  align-items: center;
+  outline-color: transparent;
+  text-decoration: none;
+}
+
+.app-navbar a.active {
+  border-bottom: 2px solid black;
+}
+
+.app-navbar a:link {
+  color: inherit;
+}
+
+.app-navbar a:visited {
+  outline: none;
+  color: inherit;
+}
+
+.app-navbar a:hover {
+  background-color: hsl(0, 0%, 90%);
+}
+
+.app-navbar a:active {
+  background-color: hsl(0, 0%, 85%);
+}
+
+.container-right {
+  flex: 1 1;
+  height: 72px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+}
+
+.avatar > p {
+  margin: 0;
+}
+
+.avatar > img {
+  width: 48px;
+  height: 48px;
+  margin-right: 5px;
+}
+
+.avatar > p {
+  font-style: italic;
+}
