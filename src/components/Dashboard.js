@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import PollCard from "./PollCard";
-import "./Dashboard.scss";
+import "./Dashboard.css";
 
 const Dashboard = (props) => {
   return (

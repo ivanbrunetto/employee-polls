@@ -5,7 +5,7 @@ import { setAuthedUser } from "../actions/authedUser";
 import LoadingBar from "react-redux-loading-bar";
 import { showLoading, hideLoading } from "react-redux-loading-bar";
 import logo from "../images/applogo_croped_374x374.jpeg";
-import "./Login.scss";
+import "./Login.css";
 
 const Login = ({ dispatch }) => {
   const [userName, setUserName] = useState("");

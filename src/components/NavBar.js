@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../images/applogo_croped_374x374.jpeg";
 import { resetApp } from "../actions/shared";
-import "./NavBar.scss";
+import "./NavBar.css";
 
 const DEFAULT_PAGE = "dashboard";
 
