@@ -21,7 +21,7 @@ const router = createBrowserRouter([
   {
     path: "*",
     element: (
-      <>
+      <div className="app">
         <LoadingBar />
         <NavBar />
         <Routes>
@@ -29,7 +29,7 @@ const router = createBrowserRouter([
           <Route path="/leaderboard" exact element={<Leaderboard />} />
           <Route path="/newpoll" exact element={<NewPoll />} />
         </Routes>
-      </>
+      </div>
     ),
     errorElement: <ErrorPage />,
   },
@@ -47,7 +47,7 @@ const App = ({ dispatch, authedUser }) => {
 
   if (!authedUser) {
     return (
-      <div className="App">
+      <div className="app">
         <Login />
       </div>
     );

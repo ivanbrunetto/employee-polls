@@ -45,3 +45,9 @@ body {
   box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.4);
   transform: translateY(1px);
 }
+
+.app {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 10px;
+}

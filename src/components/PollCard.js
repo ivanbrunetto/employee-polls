@@ -4,12 +4,16 @@ import "./PollCard.css";
 
 const PollCard = (props) => {
   return (
-    <div className="poll-card">
-      <img src={props.avatarURL} alt="avatar" />
-      <div className="info">
-        <p>{props.author}</p>
-        <p>{formatDate(props.timestamp)}</p>
-        <p>{props.headline}</p>
+    <div className="grid-container">
+      <div className="item-pcavatar">
+        <img className="pcavatar" src={props.avatarURL} alt="avatar" />
+      </div>
+      <div className="item-author-timestamp">
+        <p className="author">{props.author}</p>
+        <p className="timestamp">{formatDate(props.timestamp)}</p>
+      </div>
+      <div className="item-headline">
+        <p className="headline">{props.headline}</p>
       </div>
     </div>
   );
