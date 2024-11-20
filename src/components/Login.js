@@ -36,7 +36,7 @@ const Login = ({ dispatch }) => {
       <LoadingBar />
       <div className="login">
         <h1 className="header">Employee Polls</h1>
-        <img src={logo} />
+        <img className="main-logo" src={logo} />
         <form onSubmit={handleSubmit}>
           <p>Username</p>
           <input
