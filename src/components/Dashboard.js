@@ -34,7 +34,7 @@ const Dashboard = (props) => {
   }, []);
 
   return (
-    <div className="dashboard">
+    <section className="dashboard">
       <h2>Unanswered Polls</h2>
       <div className="poll-list-container">
         <Swiper
@@ -63,7 +63,7 @@ const Dashboard = (props) => {
           ))}
         </Swiper>
       </div>
-    </div>
+    </section>
   );
 };
 

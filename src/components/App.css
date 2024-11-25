@@ -1,5 +1,14 @@
-.debug {
-  border: 1px solid red;
+:root {
+  --COLOR-WHITE1: white;
+  --BGCOLOR-BLUE1: #0A3069; 
+  --BGCOLOR-BLUE2: #005193;
+  --BGCOLOR-BLUE3: #0969DA;
+  --BGCOLOR-BLUE4: #54AEFF;
+  --BGCOLOR-BLUE5: #B6E3FF;
+
+  --BGCOLOR-GRAY1: #d8d9db;
+  --BGCOLOR-GRAY2: #f9fafb;
+  
 }
 
 html {
@@ -31,8 +40,8 @@ body {
 }
 
 .button {
-  background-color: #005193;
-  color: white;
+  background-color: var(--BGCOLOR-BLUE2);
+  color: var(--COLOR-WHITE1);
   font-weight: 500;
 }
 
@@ -44,10 +53,4 @@ body {
 .button:active {
   box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.4);
   transform: translateY(1px);
-}
-
-.app {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 10px;
 }

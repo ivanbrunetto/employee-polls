@@ -21,15 +21,20 @@ const router = createBrowserRouter([
   {
     path: "*",
     element: (
-      <div className="app">
-        <LoadingBar />
-        <NavBar />
-        <Routes>
-          <Route path="/" exact element={<Dashboard />} />
-          <Route path="/leaderboard" exact element={<Leaderboard />} />
-          <Route path="/newpoll" exact element={<NewPoll />} />
-        </Routes>
-      </div>
+      <>
+        <header>
+          <LoadingBar />
+          <NavBar />
+        </header>
+
+        <main>
+          <Routes>
+            <Route path="/" exact element={<Dashboard />} />
+            <Route path="/leaderboard" exact element={<Leaderboard />} />
+            <Route path="/newpoll" exact element={<NewPoll />} />
+          </Routes>
+        </main>
+      </>
     ),
     errorElement: <ErrorPage />,
   },
@@ -46,11 +51,7 @@ const App = ({ dispatch, authedUser }) => {
   });
 
   if (!authedUser) {
-    return (
-      <div className="app">
-        <Login />
-      </div>
-    );
+    return <Login />;
   }
 
   return <RouterProvider router={router} />;

@@ -12,6 +12,49 @@ const NavBar = ({ dispatch, authedUser, avatarURL }) => {
 
   const navigate = useNavigate();
 
+  const toggleModal = () => {
+    document.getElementById("modal").classList.toggle("show");
+  };
+
+  const handleModalClick = () => {
+    if (document.getElementById("nav").classList.contains("show")) {
+      toggleShowMenu();
+    } else {
+      toggleShowAuthedUserMenu();
+    }
+
+    toggleModal();
+  };
+
+  const toggleShowMenu = () => {
+    document.getElementById("nav").classList.toggle("show");
+  };
+
+  const handleMenuButtonClick = () => {
+    toggleShowMenu();
+    toggleModal();
+  };
+
+  const handleMenuItemClick = (id) => {
+    setActive(id);
+    if (document.getElementById("nav").classList.contains("show")) {
+      toggleShowMenu();
+      toggleModal();
+    }
+  };
+
+  const toggleShowAuthedUserMenu = () => {
+    const style = document.querySelector(".authed-user-menu").style;
+    style.display === "none"
+      ? (style.display = "block")
+      : (style.display = "none");
+  };
+
+  const handleAvatarClick = () => {
+    toggleShowAuthedUserMenu();
+    toggleModal();
+  };
+
   const handleLogout = (e) => {
     e.preventDefault();
     sessionStorage.setItem("token", null);
@@ -21,14 +64,27 @@ const NavBar = ({ dispatch, authedUser, avatarURL }) => {
   };
 
   return (
-    <div className="app-navbar">
-      <img src={logo} alt="employee poll logo"></img>
-      <nav>
+    <section className="navbar">
+      <div id="modal" className="modal" onClick={handleModalClick}></div>
+
+      <img class="logo-left" src={logo} alt="employee poll logo"></img>
+
+      <button class="menu-button" onClick={handleMenuButtonClick}>
+        <div class="menu-burger-icon"></div>
+      </button>
+
+      <nav id="nav">
+        <div class="menu-button-container">
+          <button class="menu-button" onClick={handleMenuButtonClick}>
+            <div class="menu-close-icon"></div>
+          </button>
+        </div>
+
         <Link
           id="dashboard"
           to="/"
           className={active === "dashboard" ? "active" : ""}
-          onClick={() => setActive("dashboard")}
+          onClick={() => handleMenuItemClick("dashboard")}
         >
           Dashborad
         </Link>
@@ -36,7 +92,7 @@ const NavBar = ({ dispatch, authedUser, avatarURL }) => {
           id="leaderboard"
           to="/leaderboard"
           className={active === "leaderboard" ? "active" : ""}
-          onClick={() => setActive("leaderboard")}
+          onClick={() => handleMenuItemClick("leaderboard")}
         >
           Leaderboard
         </Link>
@@ -44,21 +100,34 @@ const NavBar = ({ dispatch, authedUser, avatarURL }) => {
           id="newpoll"
           to="/newpoll"
           className={active === "newpoll" ? "active" : ""}
-          onClick={() => setActive("newpoll")}
+          onClick={() => handleMenuItemClick("newpoll")}
         >
           New Poll
         </Link>
       </nav>
+
+      <img class="logo-center" src={logo} alt="employee poll logo"></img>
+
       <div className="container-right">
-        <div className="avatar">
-          <img src={avatarURL} alt="avatar"></img>
-          <p>{authedUser}</p>
-        </div>
-        <a href="" onClick={handleLogout}>
-          Logout
-        </a>
+        <img
+          className="avatar"
+          src={avatarURL}
+          alt="avatar"
+          onClick={handleAvatarClick}
+        ></img>
       </div>
-    </div>
+
+      <div className="authed-user-menu" style={{ display: "none" }}>
+        <ul>
+          <li>{authedUser}</li>
+          <li>
+            <a href="" onClick={handleLogout}>
+              Logout
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
   );
 };
 
