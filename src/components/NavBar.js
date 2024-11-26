@@ -67,16 +67,16 @@ const NavBar = ({ dispatch, authedUser, avatarURL }) => {
     <section className="navbar">
       <div id="modal" className="modal" onClick={handleModalClick}></div>
 
-      <img class="logo-left" src={logo} alt="employee poll logo"></img>
+      <img className="logo-left" src={logo} alt="employee poll logo"></img>
 
-      <button class="menu-button" onClick={handleMenuButtonClick}>
-        <div class="menu-burger-icon"></div>
+      <button className="menu-button" onClick={handleMenuButtonClick}>
+        <div className="menu-burger-icon"></div>
       </button>
 
       <nav id="nav">
-        <div class="menu-button-container">
-          <button class="menu-button" onClick={handleMenuButtonClick}>
-            <div class="menu-close-icon"></div>
+        <div className="menu-button-container">
+          <button className="menu-button" onClick={handleMenuButtonClick}>
+            <div className="menu-close-icon"></div>
           </button>
         </div>
 
@@ -106,7 +106,7 @@ const NavBar = ({ dispatch, authedUser, avatarURL }) => {
         </Link>
       </nav>
 
-      <img class="logo-center" src={logo} alt="employee poll logo"></img>
+      <img className="logo-center" src={logo} alt="employee poll logo"></img>
 
       <div className="container-right">
         <img
