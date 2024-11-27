@@ -1,15 +1,10 @@
-import { useState } from "react";
 import { connect } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../images/applogo_croped_374x374.jpeg";
 import { resetApp } from "../actions/shared";
 import "./NavBar.css";
 
-const DEFAULT_PAGE = "dashboard";
-
 const NavBar = ({ dispatch, authedUser, avatarURL }) => {
-  const [active, setActive] = useState(DEFAULT_PAGE);
-
   const navigate = useNavigate();
 
   const toggleModal = () => {
@@ -36,7 +31,6 @@ const NavBar = ({ dispatch, authedUser, avatarURL }) => {
   };
 
   const handleMenuItemClick = (id) => {
-    setActive(id);
     if (document.getElementById("nav").classList.contains("show")) {
       toggleShowMenu();
       toggleModal();
@@ -44,10 +38,7 @@ const NavBar = ({ dispatch, authedUser, avatarURL }) => {
   };
 
   const toggleShowAuthedUserMenu = () => {
-    const style = document.querySelector(".authed-user-menu").style;
-    style.display === "none"
-      ? (style.display = "block")
-      : (style.display = "none");
+    document.querySelector(".authed-user-menu").classList.toggle("show");
   };
 
   const handleAvatarClick = () => {
@@ -59,7 +50,6 @@ const NavBar = ({ dispatch, authedUser, avatarURL }) => {
     e.preventDefault();
     sessionStorage.setItem("token", null);
     dispatch(resetApp());
-    setActive(DEFAULT_PAGE);
     navigate("/");
   };
 
@@ -80,30 +70,30 @@ const NavBar = ({ dispatch, authedUser, avatarURL }) => {
           </button>
         </div>
 
-        <Link
+        <NavLink
           id="dashboard"
           to="/"
-          className={active === "dashboard" ? "active" : ""}
+          className={({ isActive }) => (isActive ? "active" : "")}
           onClick={() => handleMenuItemClick("dashboard")}
         >
           Dashborad
-        </Link>
-        <Link
+        </NavLink>
+        <NavLink
           id="leaderboard"
           to="/leaderboard"
-          className={active === "leaderboard" ? "active" : ""}
+          className={({ isActive }) => (isActive ? "active" : "")}
           onClick={() => handleMenuItemClick("leaderboard")}
         >
           Leaderboard
-        </Link>
-        <Link
+        </NavLink>
+        <NavLink
           id="newpoll"
           to="/newpoll"
-          className={active === "newpoll" ? "active" : ""}
+          className={({ isActive }) => (isActive ? "active" : "")}
           onClick={() => handleMenuItemClick("newpoll")}
         >
           New Poll
-        </Link>
+        </NavLink>
       </nav>
 
       <img className="logo-center" src={logo} alt="employee poll logo"></img>
@@ -117,7 +107,7 @@ const NavBar = ({ dispatch, authedUser, avatarURL }) => {
         ></img>
       </div>
 
-      <div className="authed-user-menu" style={{ display: "none" }}>
+      <div className="authed-user-menu">
         <ul>
           <li>{authedUser}</li>
           <li>

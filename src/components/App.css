@@ -1,14 +1,17 @@
 :root {
   --COLOR-WHITE1: white;
-  --BGCOLOR-BLUE1: #0A3069; 
-  --BGCOLOR-BLUE2: #005193;
-  --BGCOLOR-BLUE3: #0969DA;
-  --BGCOLOR-BLUE4: #54AEFF;
-  --BGCOLOR-BLUE5: #B6E3FF;
-
-  --BGCOLOR-GRAY1: #d8d9db;
-  --BGCOLOR-GRAY2: #f9fafb;
   
+  --COLOR-GRAY1: #767677;
+  --COLOR-GRAY2: #d8d9db;
+  --COLOR-GRAY3: #f9fafb;
+
+  --COLOR-BLUE1: #0A3069; 
+  --COLOR-BLUE2: #005193;
+  --COLOR-BLUE3: #0969DA;
+  --COLOR-BLUE4: #54AEFF;
+  --COLOR-BLUE5: #B6E3FF;
+
+  --swiper-theme-color: var(--COLOR-BLUE2);
 }
 
 html {
@@ -21,7 +24,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
   margin: 0;
-  color: #121212;
 }
 
 .header {
@@ -40,9 +42,20 @@ body {
 }
 
 .button {
-  background-color: var(--BGCOLOR-BLUE2);
+  background-color: var(--COLOR-BLUE2);
   color: var(--COLOR-WHITE1);
   font-weight: 500;
+  cursor: pointer;
+}
+
+.button:active {
+  box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.4);
+  transform: translateY(1px);
+}
+
+.button:disabled {
+  color: var(--COLOR-GRAY1);
+  font-weight: 200;
 }
 
 .input:hover,
@@ -50,7 +63,3 @@ body {
   box-shadow: 0 0px 2px hsla(0, 0%, 0%, 0.8), 0 1px 4px hsla(0, 0%, 0%, 0.2);
 }
 
-.button:active {
-  box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.4);
-  transform: translateY(1px);
-}

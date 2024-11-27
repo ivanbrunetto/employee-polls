@@ -9,12 +9,8 @@
   display: none;
 }
 
-.show {
-  display: block;
-}
-
 .navbar {
-  border-bottom: 2px solid lightgrey;
+  border-bottom: 2px solid var(--COLOR-GRAY2);
 
   display: flex;
   align-items: center;
@@ -92,7 +88,7 @@ nav {
   z-index: 3;
   border-top-right-radius: 10px;
   border-end-end-radius: 10px;
-  background-color: var(--BGCOLOR-GRAY2);
+  background-color: var(--COLOR-GRAY3);
   display: none;
   transform-origin: top left;
   animation: showMenu 0.2s ease-in-out forwards;
@@ -118,7 +114,7 @@ nav a {
   margin-right: 5px;
   padding-left: 10px;
   padding-right: 10px;
-  border-top: 2px solid lightgrey;
+  border-top: 2px solid var(--COLOR-GRAY2);
 
   display: flex;
   align-items: center;
@@ -127,7 +123,7 @@ nav a {
 }
 
 nav a:nth-child(2) {
-  border-top: 2px solid lightgray;
+  border-top: 2px solid var(--COLOR-GRAY2);
 }
 
 nav a:link {
@@ -160,10 +156,11 @@ nav a:active {
   top: 32px;
   right: 0;
   z-index: 2;
-  background-color: var(--BGCOLOR-GRAY2);
+  background-color: var(--COLOR-GRAY3);
   border-radius: 4px;
   transform-origin: top;
   animation: showAuthMenu 0.2s ease-in-out forwards;
+  display: none;
 }
 
 @keyframes showAuthMenu {
@@ -235,7 +232,7 @@ nav a:active {
   }
 
   nav a.active {
-    border-bottom: 2px solid var(--BGCOLOR-BLUE1);
+    border-bottom: 2px solid var(--COLOR-BLUE1);
   }
 
   .logo-center {
@@ -249,5 +246,8 @@ nav a:active {
     justify-content: flex-end;
     align-items: center;
   }
+}
 
+.show {
+  display: block;
 }
