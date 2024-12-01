@@ -8,13 +8,14 @@ import { useEffect } from "react";
 import { connect } from "react-redux";
 import { setAuthedUser } from "../actions/authedUser";
 import { handleInitialData } from "../actions/shared";
+import LoadingBar from "react-redux-loading-bar";
 import Login from "./Login";
 import NavBar from "./NavBar";
 import Dashboard from "./Dashboard";
-import ErrorPage from "./ErrorPage";
+import RouteError from "./RouteError";
 import Leaderboard from "./Leaderboard";
 import NewPoll from "./NewPoll";
-import LoadingBar from "react-redux-loading-bar";
+import Poll from "./Poll";
 import "./App.css";
 
 const router = createBrowserRouter([
@@ -23,7 +24,7 @@ const router = createBrowserRouter([
     element: (
       <>
         <header>
-          <LoadingBar />
+          <LoadingBar style={{ backgroundColor: "blue" }} />
           <NavBar />
         </header>
 
@@ -32,11 +33,12 @@ const router = createBrowserRouter([
             <Route path="/" exact element={<Dashboard />} />
             <Route path="/leaderboard" exact element={<Leaderboard />} />
             <Route path="/newpoll" exact element={<NewPoll />} />
+            <Route path="/poll/:id" element={<Poll />} />
           </Routes>
         </main>
       </>
     ),
-    errorElement: <ErrorPage />,
+    errorElement: <RouteError />,
   },
 ]);
 

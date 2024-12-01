@@ -76,7 +76,7 @@ const NavBar = ({ dispatch, authedUser, avatarURL }) => {
           className={({ isActive }) => (isActive ? "active" : "")}
           onClick={() => handleMenuItemClick("dashboard")}
         >
-          Dashborad
+          Dashboard
         </NavLink>
         <NavLink
           id="leaderboard"

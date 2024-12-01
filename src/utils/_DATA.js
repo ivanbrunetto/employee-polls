@@ -195,6 +195,16 @@ export function _saveQuestion(question) {
         [formattedQuestion.id]: formattedQuestion,
       };
 
+      users = {
+        ...users,
+        [question.author]: {
+          ...users[question.author],
+          questions: users[question.author].questions.concat([
+            formattedQuestion.id,
+          ]),
+        },
+      };
+
       resolve(formattedQuestion);
     }, 1000);
   });

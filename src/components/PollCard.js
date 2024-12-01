@@ -1,21 +1,22 @@
 import { connect } from "react-redux";
+import { NavLink } from "react-router-dom";
 import { formatDate } from "../utils/helpers";
 import "./PollCard.css";
 
 const PollCard = (props) => {
+  const { id, author, avatarURL, timestamp, headline } = props;
+
   return (
-    <div className="grid-container">
-      <div className="item-pcavatar">
-        <img className="pcavatar" src={props.avatarURL} alt="avatar" />
-      </div>
+    <NavLink to={`/poll/${id}`} className="poll-card">
+      <img className="item-avatar" src={avatarURL} alt="avatar" />
       <div className="item-author-timestamp">
-        <p className="author">{props.author}</p>
-        <p className="timestamp">{formatDate(props.timestamp)}</p>
+        <p className="author">{author}</p>
+        <p className="timestamp">{formatDate(timestamp)}</p>
       </div>
       <div className="item-headline">
-        <p className="headline">{props.headline}</p>
+        <p className="headline">{headline}</p>
       </div>
-    </div>
+    </NavLink>
   );
 };
 

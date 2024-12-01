@@ -1,47 +1,10 @@
-.item-pcavatar {
-  grid-area: avt;
-  justify-self: center;
-  padding-top: 8px;
-}
-
-.pcavatar {
-  width: 36px;
-  height: 36px;
-}
-
-.item-author-timestamp {
-  grid-area: auth-tstp;
-  display: flex;
-  flex-direction: column;
-  padding-top: 8px;
-}
-
-.author {
-  margin: 2px;
-}
-
-.timestamp {
-  margin: 2px;
-  color: gray;
-}
-
-.item-headline {
-  grid-area: hdln;
-}
-
-.headline {
-  display: flex;
-  align-items: center;
-  font-style: italic;
-}
-
-.grid-container {
+.poll-card {
   display: grid;
   grid-template-columns: 56px 224px;
   grid-template-rows: 56px 56px;
-  grid-template-areas: 
+  grid-template-areas:
     "avt auth-tstp"
-    "avt hdln";
+    ". hdln";
 
   padding: 0.5rem;
   margin: 10px;
@@ -50,4 +13,39 @@
   border: none;
   border-radius: 8px;
   box-shadow: 4px 4px 4px rgba(205, 207, 214, 0.8);
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+}
+
+.item-avatar {
+  grid-area: avt;
+  align-self: center;
+  justify-self: center;
+  width: 36px;
+  height: 36px;
+}
+
+.item-author-timestamp {
+  grid-area: auth-tstp;
+  align-self: center;
+}
+
+.item-author-timestamp .author {
+  margin: 2px;
+}
+
+.item-author-timestamp .timestamp {
+  margin: 2px;
+  color: gray;
+}
+
+.item-headline {
+  grid-area: hdln;
+}
+
+.item-headline .headline {
+  display: flex;
+  align-items: center;
+  font-style: italic;
 }

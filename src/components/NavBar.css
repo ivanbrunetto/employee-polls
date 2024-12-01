@@ -120,6 +120,8 @@ nav a {
   align-items: center;
   outline-color: transparent;
   text-decoration: none;
+
+  transition: background-color 0.5s;
 }
 
 nav a:nth-child(2) {

@@ -33,7 +33,7 @@ const Login = ({ dispatch }) => {
 
   return (
     <>
-      <LoadingBar />
+      <LoadingBar style={{ backgroundColor: "blue" }} />
       <div className="login">
         <h1 className="header">Employee Polls</h1>
         <img className="main-logo" src={logo} />

@@ -1,0 +1,28 @@
+.poll-list {
+    margin: 1rem;
+    width: 316px;
+    max-width: 1100px;
+}
+
+.poll-list h2 {
+    font-size: 1.2rem;
+    font-weight: normal;
+    text-align: center;
+}
+
+
+@media (min-width: 700px) {
+    .poll-list {
+        width: 632px;
+    }
+
+    .poll-list h2 {
+        font-size: 1.4rem;
+    }
+}
+
+@media (min-width: 960px) {
+    .poll-list {
+        width: 948px;
+    }
+}

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { handleAddQuestion } from "../actions/questions";
 import "./NewPoll.css";
 
-const NewPoll = ({ dispatch, authedUser }) => {
+const NewPoll = ({ dispatch, loading, authedUser }) => {
   const [headline, setHeadline] = useState("");
   const [firstOption, setFirstOption] = useState("");
   const [secondOption, setSecondOption] = useState("");
@@ -14,7 +14,9 @@ const NewPoll = ({ dispatch, authedUser }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(handleAddQuestion(headline, firstOption, secondOption));
+    dispatch(
+      handleAddQuestion(authedUser, headline, firstOption, secondOption)
+    );
 
     document.getElementById("new-poll-form").reset();
     setHeadline("");
@@ -23,7 +25,7 @@ const NewPoll = ({ dispatch, authedUser }) => {
     navigate("/");
   };
 
-  return (
+  return loading ? null : (
     <section className="new-poll">
       <h1 className="page-title">Would you rather</h1>
       <p className="page-subtitle">Create your own poll</p>
@@ -75,8 +77,9 @@ const NewPoll = ({ dispatch, authedUser }) => {
   );
 };
 
-const mapStateToProps = ({ authedUser }) => {
+const mapStateToProps = ({ authedUser, loadingBar }) => {
   return {
+    loading: loadingBar.default !== 0,
     authedUser,
   };
 };
