@@ -15,14 +15,22 @@ const Dashboard = (props) => {
   );
 };
 
-const mapStateToProps = ({ loadingBar, questions, users, authedUser }) => ({
-  loading: loadingBar.default !== 0,
-  answeredQuestions: users[authedUser]
-    ? Object.keys(users[authedUser].answers)
-    : [],
-  unansweredQuestions: Object.keys(questions).filter(
-    (id) => !Object.keys(users[authedUser]?.answers).includes(id)
-  ),
-});
+const mapStateToProps = ({ loadingBar, questions, users, authedUser }) => {
+  const orderedQuestions = Object.values(questions)
+    .toSorted((a, b) => b.timestamp - a.timestamp)
+    .map((question) => question.id);
+
+  return {
+    loading: loadingBar.default !== 0,
+    answeredQuestions: users[authedUser]
+      ? orderedQuestions.filter((qid) =>
+          Object.keys(users[authedUser]?.answers).includes(qid)
+        )
+      : [],
+    unansweredQuestions: orderedQuestions.filter(
+      (qid) => !Object.keys(users[authedUser]?.answers).includes(qid)
+    ),
+  };
+};
 
 export default connect(mapStateToProps)(Dashboard);
