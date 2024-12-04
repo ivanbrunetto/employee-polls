@@ -35,6 +35,10 @@ const Poll = (props) => {
   }
 
   const handleOptionClick = (e) => {
+    if (e.currentTarget.classList.contains("disabled")) {
+      return;
+    }
+
     dispatch(
       handleAddQuestionAnswer(authedUser, router.params.id, e.currentTarget.id)
     );
