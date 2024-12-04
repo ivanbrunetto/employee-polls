@@ -23,10 +23,6 @@
   margin: 10px;
 }
 
-.logo-left {
-  display: none;
-}
-
 .menu-button {
   background-color: transparent;
   border: none;
@@ -145,11 +141,19 @@ nav a:active {
   background-color: hsl(0, 0%, 85%);
 }
 
-.avatar {
-  width: 48px;
-  height: 48px;
-  padding-right: 8px;
+.container-right {
+  margin-right: 5px;
+  flex: 1 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   cursor: pointer;
+}
+
+.avatar {
+  width: 42px;
+  height: 42px;
+  padding-right: 8px;
 }
 
 .authed-user-menu {
@@ -197,10 +201,6 @@ nav a:active {
 }
 
 @media (min-width: 700px) {
-  .logo-left {
-    display: initial;
-  }
-
   .menu-button {
    display: none;
   }
@@ -237,17 +237,6 @@ nav a:active {
     border-bottom: 2px solid var(--COLOR-BLUE1);
   }
 
-  .logo-center {
-    display: none;
-  }
-
-  .container-right {
-    margin-right: 5px;
-    flex: 1 1;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-  }
 }
 
 .show {

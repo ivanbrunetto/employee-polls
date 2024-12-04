@@ -57,7 +57,7 @@ const NavBar = ({ dispatch, authedUser, avatarURL }) => {
     <section className="navbar">
       <div id="modal" className="modal" onClick={handleModalClick}></div>
 
-      <img className="logo-left" src={logo} alt="employee poll logo"></img>
+      <img src={logo} alt="employee poll logo"></img>
 
       <button className="menu-button" onClick={handleMenuButtonClick}>
         <div className="menu-burger-icon"></div>
@@ -96,20 +96,13 @@ const NavBar = ({ dispatch, authedUser, avatarURL }) => {
         </NavLink>
       </nav>
 
-      <img className="logo-center" src={logo} alt="employee poll logo"></img>
-
-      <div className="container-right">
-        <img
-          className="avatar"
-          src={avatarURL}
-          alt="avatar"
-          onClick={handleAvatarClick}
-        ></img>
+      <div className="container-right" onClick={handleAvatarClick}>
+        <img className="avatar" src={avatarURL} alt="avatar"></img>
+        <p>{authedUser} &#9660;</p>
       </div>
 
       <div className="authed-user-menu">
         <ul>
-          <li>{authedUser}</li>
           <li>
             <a href="" onClick={handleLogout}>
               Logout
