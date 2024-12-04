@@ -155,7 +155,7 @@ nav a:active {
 .authed-user-menu {
   width: 100px;
   position: absolute;
-  top: 32px;
+  top: 74px;
   right: 0;
   z-index: 2;
   background-color: var(--COLOR-GRAY3);
