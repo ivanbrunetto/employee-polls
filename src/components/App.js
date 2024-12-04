@@ -32,8 +32,8 @@ const router = createBrowserRouter([
           <Routes>
             <Route path="/" exact element={<Dashboard />} />
             <Route path="/leaderboard" exact element={<Leaderboard />} />
-            <Route path="/newpoll" exact element={<NewPoll />} />
-            <Route path="/poll/:id" element={<Poll />} />
+            <Route path="/add" exact element={<NewPoll />} />
+            <Route path="/questions/:id" element={<Poll />} />
           </Routes>
         </main>
       </>

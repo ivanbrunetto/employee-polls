@@ -7,7 +7,7 @@ const PollCard = (props) => {
   const { id, author, avatarURL, timestamp, headline } = props;
 
   return (
-    <NavLink to={`/poll/${id}`} className="poll-card">
+    <NavLink to={`/questions/${id}`} className="poll-card">
       <img className="item-avatar" src={avatarURL} alt="avatar" />
       <div className="item-author-timestamp">
         <p className="author">{author}</p>

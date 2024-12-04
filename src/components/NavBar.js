@@ -88,7 +88,7 @@ const NavBar = ({ dispatch, authedUser, avatarURL }) => {
         </NavLink>
         <NavLink
           id="newpoll"
-          to="/newpoll"
+          to="/add"
           className={({ isActive }) => (isActive ? "active" : "")}
           onClick={() => handleMenuItemClick("newpoll")}
         >
