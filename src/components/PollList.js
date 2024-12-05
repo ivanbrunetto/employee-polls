@@ -1,13 +1,11 @@
 import PollCard from "./PollCard";
 import { useState, useEffect } from "react";
+import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { register } from "swiper/element/bundle";
 import "./PollList.css";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-
-register();
 
 const PollList = (props) => {
   const [slidesPerView, setSlidesPerView] = useState(3);
@@ -38,6 +36,7 @@ const PollList = (props) => {
     <section className="poll-list">
       <h2>{title}</h2>
       <Swiper
+        modules={[Navigation, Pagination]}
         slidesPerView={slidesPerView}
         navigation
         pagination={{ clickable: true }}
