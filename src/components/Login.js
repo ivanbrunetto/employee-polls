@@ -7,10 +7,12 @@ import { showLoading, hideLoading } from "react-redux-loading-bar";
 import logo from "../images/applogo_croped_374x374.jpeg";
 import "./Login.css";
 
-const Login = ({ dispatch }) => {
-  const [userName, setUserName] = useState("");
+const Login = (props) => {
+  const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [loginFailed, setLoginFailed] = useState(false);
+
+  const { dispatch, setToken } = props;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,10 +20,10 @@ const Login = ({ dispatch }) => {
     setLoginFailed(false);
 
     dispatch(showLoading());
-    login({ userName, password })
+    login({ username, password })
       .then((token) => {
-        dispatch(setAuthedUser(userName));
-        sessionStorage.setItem("token", JSON.stringify({ userName, token }));
+        dispatch(setAuthedUser(username));
+        setToken(token);
         dispatch(hideLoading());
       })
       .catch((er) => {
@@ -41,6 +43,7 @@ const Login = ({ dispatch }) => {
           <p>Username</p>
           <input
             className="input"
+            data-testid="username-input"
             id="username"
             type="text"
             placeholder="Username"
@@ -50,6 +53,7 @@ const Login = ({ dispatch }) => {
           <p>Password</p>
           <input
             className="input"
+            data-testid="password-input"
             id="password"
             type="password"
             placeholder="Password"
@@ -57,11 +61,20 @@ const Login = ({ dispatch }) => {
           />
 
           <div>
-            <button className="button" type="submit">
+            <button
+              className="button"
+              type="submit"
+              disabled={username === "" || password === ""}
+              data-testid="login-btn"
+            >
               Login
             </button>
           </div>
-          {loginFailed && <p>Invalid username / password. Please try again</p>}
+          {loginFailed && (
+            <p data-testid="login-failed-msg">
+              Invalid username / password. Please try again
+            </p>
+          )}
         </form>
       </div>
     </>

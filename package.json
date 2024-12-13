@@ -41,5 +41,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "swiper/react": "swiper/swiper-react.d.ts",
+      "swiper/modules": "swiper/types/modules/index.d.ts",
+      "swiper/css": "swiper/swiper.min.css"
+    }
   }
 }

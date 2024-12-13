@@ -1,9 +1,4 @@
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Routes,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { useEffect } from "react";
 import { connect } from "react-redux";
 import { setAuthedUser } from "../actions/authedUser";
@@ -11,56 +6,37 @@ import { handleInitialData } from "../actions/shared";
 import LoadingBar from "react-redux-loading-bar";
 import Login from "./Login";
 import NavBar from "./NavBar";
-import Dashboard from "./Dashboard";
-import RouteError from "./RouteError";
-import Leaderboard from "./Leaderboard";
-import NewPoll from "./NewPoll";
-import Poll from "./Poll";
+import useToken from "../hooks/useToken";
+import Routing from "./Routing";
 import "./App.css";
 
-const router = createBrowserRouter([
-  {
-    path: "*",
-    element: (
-      <>
-        <header>
-          <LoadingBar style={{ backgroundColor: "blue" }} />
-          <NavBar />
-        </header>
+const App = (props) => {
+  const { token, setToken } = useToken();
+  const { dispatch } = props;
 
-        <main>
-          <Routes>
-            <Route path="/" exact element={<Dashboard />} />
-            <Route path="/leaderboard" exact element={<Leaderboard />} />
-            <Route path="/add" exact element={<NewPoll />} />
-            <Route path="/questions/:id" element={<Poll />} />
-          </Routes>
-        </main>
-      </>
-    ),
-    errorElement: <RouteError />,
-  },
-]);
-
-const App = ({ dispatch, authedUser }) => {
   useEffect(() => {
-    const credentials = JSON.parse(sessionStorage.getItem("token"));
-
-    if (credentials?.userName) {
-      dispatch(setAuthedUser(credentials.userName));
+    if (token) {
+      dispatch(setAuthedUser(token.username));
       dispatch(handleInitialData());
     }
   });
 
-  if (!authedUser) {
-    return <Login />;
+  if (!token) {
+    return <Login setToken={setToken} />;
   }
 
-  return <RouterProvider router={router} />;
+  return (
+    <BrowserRouter>
+      <header>
+        <LoadingBar style={{ backgroundColor: "blue" }} />
+        <NavBar setToken={setToken} />
+      </header>
+
+      <main>
+        <Routing />
+      </main>
+    </BrowserRouter>
+  );
 };
 
-const mapStateToProps = ({ authedUser }) => ({
-  authedUser,
-});
-
-export default connect(mapStateToProps)(App);
+export default connect()(App);

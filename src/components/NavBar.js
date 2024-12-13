@@ -4,8 +4,10 @@ import logo from "../images/applogo_croped_374x374.jpeg";
 import { resetApp } from "../actions/shared";
 import "./NavBar.css";
 
-const NavBar = ({ dispatch, authedUser, avatarURL }) => {
+const NavBar = (props) => {
   const navigate = useNavigate();
+
+  const { dispatch, authedUser, avatarURL, setToken } = props;
 
   const toggleModal = () => {
     document.getElementById("modal").classList.toggle("show");
@@ -48,7 +50,7 @@ const NavBar = ({ dispatch, authedUser, avatarURL }) => {
 
   const handleLogout = (e) => {
     e.preventDefault();
-    sessionStorage.setItem("token", null);
+    setToken(null);
     dispatch(resetApp());
     navigate("/");
   };
@@ -98,7 +100,9 @@ const NavBar = ({ dispatch, authedUser, avatarURL }) => {
 
       <div className="container-right" onClick={handleAvatarClick}>
         <img className="avatar" src={avatarURL} alt="avatar"></img>
-        <p>{authedUser} &#9660;</p>
+        <p>
+          <span data-testid="authed-user">{authedUser}</span> &#9660;
+        </p>
       </div>
 
       <div className="authed-user-menu">

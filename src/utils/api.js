@@ -3,6 +3,8 @@ import {
   _getQuestions,
   _saveQuestion,
   _saveQuestionAnswer,
+  _login,
+  _getAuthedUser,
 } from "./_DATA";
 
 export function getUsers() {
@@ -30,19 +32,10 @@ export function saveQuestionAnswer({ authedUser, qid, answer }) {
   return _saveQuestionAnswer({ authedUser, qid, answer });
 }
 
-function generateToken() {
-  return Math.random().toString(36).substring(2, 15) + Date.now().toString(36);
+export function login({ username, password }) {
+  return _login({ username, password });
 }
 
-export async function login(credentials) {
-  const users = await _getUsers();
-
-  if (
-    users[credentials.userName] &&
-    users[credentials.userName].password === credentials.password
-  ) {
-    return generateToken();
-  }
-
-  throw Error("invalid user/password");
+export function getAuthedUser(token) {
+  return _getAuthedUser(token);
 }

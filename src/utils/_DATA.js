@@ -1,3 +1,5 @@
+let authedUsers = {};
+
 let users = {
   sarahedo: {
     id: "sarahedo",
@@ -240,6 +242,65 @@ export function _saveQuestionAnswer({ authedUser, qid, answer }) {
       };
 
       resolve(true);
+    }, 500);
+  });
+}
+
+function generateToken() {
+  return Math.random().toString(36).substring(2, 15) + Date.now().toString(36);
+}
+
+export function _login({ username, password }) {
+  return new Promise((resolve, reject) => {
+    if (!username || !password) {
+      reject("Please provide username and password");
+    }
+
+    setTimeout(() => {
+      if (users[username] && users[username].password === password) {
+        const token = generateToken();
+        authedUsers = {
+          ...authedUsers,
+          [token]: { token, username },
+        };
+        resolve({ token, username });
+      } else {
+        reject("invalid username/password");
+      }
+    }, 500);
+  });
+}
+
+export function _getAuthedUser(token) {
+  console.log("authedUsers: ", authedUsers);
+  return new Promise((resolve, reject) => {
+    if (!token) {
+      reject("Please provide token");
+    }
+
+    setTimeout(() => {
+      authedUsers[token]
+        ? resolve(authedUsers[token].username)
+        : reject("Invalid token");
+    }, 500);
+  });
+}
+
+export function _logout(token) {
+  return new Promise((resolve, reject) => {
+    if (!token) {
+      reject("Please provide token");
+    }
+
+    setTimeout(() => {
+      if (authedUsers[token]) {
+        authedUsers = authedUsers.filter(
+          (authedUser) => authedUser.token != token
+        );
+        resolve("success");
+      } else {
+        reject("Invalid token");
+      }
     }, 500);
   });
 }
