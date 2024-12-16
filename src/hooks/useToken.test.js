@@ -1,4 +1,4 @@
-import useToken from "../useToken";
+import useToken from "./useToken";
 import { fireEvent, render, screen } from "@testing-library/react";
 
 let mockStorage = {};
