@@ -24,7 +24,7 @@ const TestComponent = (props) => {
   console.log(token);
 
   const handleClick = (e) => {
-    const inputToken = document.getElementsByTagName("input")[0].value;
+    const inputToken = screen.getByTestId("input-token").value;
     setToken(inputToken);
   };
 

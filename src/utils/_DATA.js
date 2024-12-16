@@ -177,7 +177,7 @@ function formatQuestion({
   };
 }
 
-export function _saveQuestion(question) {
+export function _saveQuestion(question = {}) {
   return new Promise((resolve, reject) => {
     if (
       !question.headlineText ||
