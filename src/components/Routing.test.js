@@ -1,16 +1,16 @@
 import { MemoryRouter } from "react-router-dom";
 import { render, screen } from "@testing-library/react";
-import Routing from "../Routing";
+import Routing from "./Routing";
 
-jest.mock("../Dashboard", () => () => (
+jest.mock("./Dashboard", () => () => (
   <mock-dashboard data-testid={"Dashboard"} />
 ));
-jest.mock("../Leaderboard", () => () => (
+jest.mock("./Leaderboard", () => () => (
   <mock-leaderboard data-testid={"Leaderboard"} />
 ));
-jest.mock("../NewPoll", () => () => <mock-newpoll data-testid={"NewPoll"} />);
-jest.mock("../Poll", () => () => <mock-poll data-testid={"Poll"} />);
-jest.mock("../Error", () => () => <mock-error data-testid={"Error"} />);
+jest.mock("./NewPoll", () => () => <mock-newpoll data-testid={"NewPoll"} />);
+jest.mock("./Poll", () => () => <mock-poll data-testid={"Poll"} />);
+jest.mock("./Error", () => () => <mock-error data-testid={"Error"} />);
 
 function testRoute(route, id) {
   render(

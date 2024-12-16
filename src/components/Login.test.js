@@ -1,10 +1,9 @@
 import React from "react";
 import { Provider } from "react-redux";
-import { store } from "../../store";
+import { store } from "../store";
 import { render, screen, fireEvent } from "@testing-library/react";
-import * as api from "../../utils/api";
-
-import Login from "../Login";
+import * as api from "../utils/api";
+import Login from "./Login";
 
 function renderLogin(mockSetToken) {
   return render(
@@ -22,7 +21,7 @@ const inputText = (testId, text) => {
   });
 };
 
-jest.mock("../../utils/api");
+jest.mock("../utils/api");
 
 describe("Login", () => {
   it("matches Login snapshot", () => {

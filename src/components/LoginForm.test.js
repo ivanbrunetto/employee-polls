@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import LoginForm from "../LoginForm";
+import LoginForm from "./LoginForm";
 
 const inputText = (testId, text) => {
   fireEvent.change(screen.getByTestId(testId), {

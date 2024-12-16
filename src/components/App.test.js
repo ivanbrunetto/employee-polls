@@ -1,9 +1,9 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
-import { store } from "../../store";
-import App from "../App";
-import * as shared from "../../actions/shared";
+import { store } from "../store";
+import App from "./App";
+import * as shared from "../actions/shared";
 
 jest.mock("swiper/react", () => ({
   Swiper: ({ children }) => children,
@@ -15,9 +15,9 @@ jest.mock("swiper/modules", () => ({
   Pagination: (props) => null,
 }));
 
-jest.mock("../Login", () => () => <mock-login data-testid={"Login"} />);
-jest.mock("../NavBar", () => () => <mock-navbard data-testid={"NavBar"} />);
-jest.mock("../Routing", () => () => <mock-routing data-testid={"Routing"} />);
+jest.mock("./Login", () => () => <mock-login data-testid={"Login"} />);
+jest.mock("./NavBar", () => () => <mock-navbard data-testid={"NavBar"} />);
+jest.mock("./Routing", () => () => <mock-routing data-testid={"Routing"} />);
 
 function renderApp() {
   return render(
