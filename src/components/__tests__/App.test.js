@@ -5,10 +5,6 @@ import { store } from "../../store";
 import App from "../App";
 import * as shared from "../../actions/shared";
 
-function mockComponent(id) {
-  return <mock-login data-testid={id} />;
-}
-
 jest.mock("swiper/react", () => ({
   Swiper: ({ children }) => children,
   SwiperSlide: ({ children }) => children,
@@ -19,9 +15,9 @@ jest.mock("swiper/modules", () => ({
   Pagination: (props) => null,
 }));
 
-jest.mock("../Login", () => () => mockComponent("Login"));
-jest.mock("../NavBar", () => () => mockComponent("NavBar"));
-jest.mock("../Routing", () => () => mockComponent("Routing"));
+jest.mock("../Login", () => () => <mock-login data-testid={"Login"} />);
+jest.mock("../NavBar", () => () => <mock-navbard data-testid={"NavBar"} />);
+jest.mock("../Routing", () => () => <mock-routing data-testid={"Routing"} />);
 
 function renderApp() {
   return render(
@@ -79,59 +75,3 @@ describe("App", () => {
     expect(spy).toHaveBeenCalled();
   });
 });
-
-/* describe("Login", () => {
-  function performLogin(username, password) {
-    const usernameInput = screen.getByTestId("username-input");
-    const passwordInput = screen.getByTestId("password-input");
-
-    fireEvent.change(usernameInput, { target: { value: username } });
-    fireEvent.change(passwordInput, { target: { value: password } });
-
-    fireEvent.click(screen.getByTestId("login-btn"));
-  }
-
-  it("matches login snapshot", () => {
-    const { container } = renderApp();
-    expect(container).toMatchSnapshot();
-  });
-
-  it("enable login button", async () => {
-    renderApp();
-    const loginBtn = screen.getByTestId("login-btn");
-    expect(loginBtn.disabled).toBeTruthy();
-
-    fireEvent.change(screen.getByTestId("username-input"), {
-      target: { value: "a" },
-    });
-    expect(loginBtn.disabled).toBeTruthy();
-
-    fireEvent.change(screen.getByTestId("password-input"), {
-      target: { value: "a" },
-    });
-    expect(loginBtn.disabled).toBeFalsy();
-  });
-
-  it("shows login failed message", async () => {
-    renderApp();
-
-    const usernameInput = screen.getByTestId("username-input");
-    const passwordInput = screen.getByTestId("password-input");
-
-    fireEvent.change(usernameInput, { target: { value: "a" } });
-    fireEvent.change(passwordInput, { target: { value: "a" } });
-
-    fireEvent.click(screen.getByTestId("login-btn"));
-    await screen.findByTestId("login-failed-msg");
-  });
-
-  it("does login successfully", async () => {
-    renderApp();
-
-    performLogin("sarahedo", "password123");
-
-    const actualUsername = (await screen.findByTestId("authed-user")).innerHTML;
-    expect(actualUsername).toEqual("sarahedo");
-  });
-});
- */
