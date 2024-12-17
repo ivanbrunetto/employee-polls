@@ -21,8 +21,6 @@ afterEach(() => {
 const TestComponent = (props) => {
   const { token, setToken } = useToken();
 
-  console.log(token);
-
   const handleClick = (e) => {
     const inputToken = screen.getByTestId("input-token").value;
     setToken(inputToken);
@@ -32,7 +30,7 @@ const TestComponent = (props) => {
     <mock-component>
       <input type="text" data-testid="input-token" />
       <button data-testid="fire-set-token" onClick={handleClick}></button>
-      <p data-testid="p-token">{token?.token}</p>
+      <p data-testid="p-token">{token ? token.token : "null"}</p>
     </mock-component>
   );
 };
@@ -58,5 +56,11 @@ describe("useToken", () => {
 
     expect(screen.getByTestId("p-token").innerHTML).toBe(testToken.token);
     expect(JSON.parse(mockStorage.token)).toEqual(testToken);
+  });
+
+  it("returns null is invalid JSON object is saved", () => {
+    mockStorage.token = "invalid";
+    render(<TestComponent />);
+    expect(screen.getByTestId("p-token").innerHTML).toBe("null");
   });
 });
