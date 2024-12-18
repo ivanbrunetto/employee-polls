@@ -1,9 +1,9 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { store } from "../store";
-import App from "./App";
 import * as shared from "../actions/shared";
+import App from "./App";
 
 jest.mock("swiper/react", () => ({
   Swiper: ({ children }) => children,
@@ -15,7 +15,25 @@ jest.mock("swiper/modules", () => ({
   Pagination: (props) => null,
 }));
 
-jest.mock("./Login", () => () => <mock-login data-testid={"Login"} />);
+jest.mock("react-router-dom", () => ({
+  __esModule: true,
+  ...jest.requireActual("react-router-dom"),
+  BrowserRouter: ({ children }) => (
+    <mock-browser-router>{children}</mock-browser-router>
+  ),
+}));
+
+jest.mock("./Login", () => ({ setToken }) => {
+  return (
+    <mock-login data-testid={"Login"}>
+      <button
+        data-testid={"login-btn"}
+        onClick={() => setToken({ username: "test-user" })}
+      ></button>
+    </mock-login>
+  );
+});
+
 jest.mock("./NavBar", () => () => <mock-navbard data-testid={"NavBar"} />);
 jest.mock("./Routing", () => () => <mock-routing data-testid={"Routing"} />);
 
@@ -29,46 +47,27 @@ function renderApp() {
   );
 }
 
-let mockStorage = {};
-
-beforeEach(() => {
-  Storage.prototype.setItem = jest.fn((key, value) => {
-    mockStorage[key] = value;
-  });
-
-  Storage.prototype.getItem = jest.fn((key) =>
-    mockStorage[key] ? mockStorage[key] : null
-  );
-
-  mockStorage = {};
-});
-
 afterEach(() => {
   jest.restoreAllMocks();
 });
 
 describe("App", () => {
-  it("renders the login page when token is not set", () => {
+  it("renders the login page when the app is loaded", () => {
     renderApp();
     expect(screen.getByTestId("Login")).toBeTruthy();
   });
 
-  it("renders the main page when token is set", () => {
-    mockStorage = {
-      token: JSON.stringify({ token: "abc", username: "test-user" }),
-    };
-
+  it("renders the app when the token is set", async () => {
     renderApp();
-    expect(screen.getByTestId("NavBar")).toBeTruthy();
-    expect(screen.getByTestId("Routing")).toBeTruthy();
+    expect(screen.getByTestId("Login")).toBeTruthy();
+    fireEvent.click(screen.getByTestId("login-btn"));
+    await screen.findByTestId("NavBar");
+    await screen.findByTestId("Routing");
   });
 
   it("initializes storage when token is set", () => {
-    mockStorage = {
-      token: JSON.stringify({ token: "abc", username: "test-user" }),
-    };
-
     const spy = jest.spyOn(shared, "handleInitialData");
+    React.useState = jest.fn().mockReturnValue([{ username: "test-user" }, {}]);
     renderApp();
     const state = store.getState();
     expect(state.authedUser).toBe("test-user");

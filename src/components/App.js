@@ -1,20 +1,19 @@
 import { BrowserRouter } from "react-router-dom";
-import { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { setAuthedUser } from "../actions/authedUser";
 import { handleInitialData } from "../actions/shared";
 import LoadingBar from "react-redux-loading-bar";
 import Login from "./Login";
 import NavBar from "./NavBar";
-import useToken from "../hooks/useToken";
 import Routing from "./Routing";
 import "./App.css";
 
 const App = (props) => {
-  const { token, setToken } = useToken();
+  const [token, setToken] = React.useState();
   const { dispatch } = props;
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (token) {
       dispatch(setAuthedUser(token.username));
       dispatch(handleInitialData());

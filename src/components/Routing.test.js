@@ -21,23 +21,27 @@ function testRoute(route, id) {
   expect(screen.getByTestId(id)).toBeTruthy();
 }
 describe("Routing", () => {
-  it("should mock the Dashboard component", () => {
+  it("render the / page component", () => {
     testRoute("/", "Dashboard");
   });
 
-  it("should mock the Leaderboard component", () => {
+  it("render the /dashboard page", () => {
+    testRoute("/dashboard", "Dashboard");
+  });
+
+  it("should render the /leaderboard", () => {
     testRoute("/leaderboard", "Leaderboard");
   });
 
-  it("should mock the NewPoll component", () => {
+  it("should render the /add page", () => {
     testRoute("/add", "NewPoll");
   });
 
-  it("should mock the Poll component", () => {
+  it("should render the /questions/:id", () => {
     testRoute("/questions/:id", "Poll");
   });
 
-  it("should mock the Error component", () => {
+  it("should render the error page", () => {
     testRoute("/*", "Error");
   });
 });

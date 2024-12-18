@@ -9,6 +9,7 @@ const Routing = () => {
   return (
     <Routes>
       <Route path="/" exact element={<Dashboard />} />
+      <Route path="/dashboard" exact element={<Dashboard />} />
       <Route path="/leaderboard" exact element={<Leaderboard />} />
       <Route path="/add" exact element={<NewPoll />} />
       <Route path="/questions/:id" element={<Poll />} />
