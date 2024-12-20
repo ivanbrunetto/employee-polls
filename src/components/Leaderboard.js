@@ -26,7 +26,7 @@ const LeaderBoard = (props) => {
         </thead>
         <tbody>
           {rankedUsers.map((user) => (
-            <tr>
+            <tr key={user.id}>
               <th scope="row">{pos++}</th>
               <td>
                 <img className="avatar" src={user.avatarURL} alt="avatar"></img>
@@ -45,6 +45,7 @@ const LeaderBoard = (props) => {
 const mapStateToProps = ({ loadingBar, users }) => ({
   loading: loadingBar.default !== 0,
   users: Object.values(users).map((user) => ({
+    id: user.id,
     name: user.name,
     avatarURL: user.avatarURL,
     answered: Object.keys(user.answers).length,

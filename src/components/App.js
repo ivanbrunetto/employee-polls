@@ -25,7 +25,9 @@ const App = (props) => {
   }
 
   return (
-    <BrowserRouter>
+    <BrowserRouter
+      future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+    >
       <header>
         <LoadingBar style={{ backgroundColor: "blue" }} />
         <NavBar setToken={setToken} />
