@@ -23,10 +23,14 @@ const Poll = (props) => {
     author,
     avatarURL,
     headline,
-    answered,
+    answer,
     optionOne,
     optionTwo,
   } = props;
+
+  const disabled = answer ? "disabled" : "";
+  const optionOneVoted = answer === "optionOne" ? "voted" : "";
+  const optionTwoVoted = answer === "optionTwo" ? "voted" : "";
 
   const navigate = useNavigate();
 
@@ -55,26 +59,26 @@ const Poll = (props) => {
         <div className="options">
           <div
             id="optionOne"
-            className={`option-text-box ${answered ? "disabled" : ""}`}
+            className={`option-text-box ${disabled} ${optionOneVoted}`}
             onClick={handleOptionClick}
           >
             <p>{optionOne.text}</p>
           </div>
           <div
             id="optionTwo"
-            className={`option-text-box ${answered ? "disabled" : ""}`}
+            className={`option-text-box ${disabled} ${optionTwoVoted}`}
             onClick={handleOptionClick}
           >
             <p>{optionTwo.text}</p>
           </div>
         </div>
-        {answered && (
+        {answer && (
           <div className="options">
             <p className="option-stats">Users voted: {optionOne.votes}</p>
             <p className="option-stats">Users voted: {optionTwo.votes}</p>
           </div>
         )}
-        {answered && (
+        {answer && (
           <div className="options">
             <p className="option-stats">{optionOne.percent}%</p>
             <p className="option-stats">{optionTwo.percent}%</p>
@@ -105,7 +109,7 @@ const mapStateToProps = (
     retObj.optionTwo = { text: question.optionTwo.text };
 
     if (users[authedUser].answers[id]) {
-      retObj.answered = true;
+      retObj.answer = users[authedUser].answers[id];
       retObj.optionOne.votes = question.optionOne.votes.length;
       retObj.optionTwo.votes = question.optionTwo.votes.length;
 

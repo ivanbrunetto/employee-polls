@@ -41,6 +41,9 @@
     justify-content: center;
     transition: background-color 0.2s;
 }
+.voted {
+    outline: solid red;
+}
 
 .option-text-box:hover {
     background-color: hsl(0, 0%, 90%);
