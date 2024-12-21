@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "./Poll.css";
 import Error from "./Error";
 import { handleAddQuestionAnswer } from "../actions/questions";
@@ -32,8 +32,6 @@ const Poll = (props) => {
   const optionOneVoted = answer === "optionOne" ? "voted" : "";
   const optionTwoVoted = answer === "optionTwo" ? "voted" : "";
 
-  const navigate = useNavigate();
-
   if (!loading && invalid) {
     return <Error error={{ message: "Invalid question ID" }} />;
   }
@@ -46,7 +44,6 @@ const Poll = (props) => {
     dispatch(
       handleAddQuestionAnswer(authedUser, router.params.id, e.currentTarget.id)
     );
-    navigate("/");
   };
 
   return loading ? null : (
